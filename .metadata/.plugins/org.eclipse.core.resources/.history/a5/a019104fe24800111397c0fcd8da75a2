@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>request page</title>
+<style>
+	ul{
+		list-style : none;
+		line-height : 200%;
+	}
+</style>
+</head>
+<body>
+	<h1>요청을 보낼 수 있는 페이지</h1>
+	
+	<pre>
+		특징 : 
+		1. POST 방식으로 요청을 보내면 BODY영역에 데이터를 포함시켜 요청
+		=> 사용자가 입력한 값(데이터)들이 URL에 노출되지 않음
+		=> 로그인, 회원가입 같은 기능들은 POST방식이 적합함
+		
+		2. 전송하는 길이에 제약이 없음
+	</pre>
+	
+	<h2> 사용자의 정보 받기 = post</h2>
+	
+	<p>정보를 입력하신 뒤 정보보내기 버튼을 클릭해주세요.</p>
+	
+	<!-- 
+		form 태그 안에 존재하는 submit 타입의 버튼을 클릭시
+		form 태그의 속성 중 action 속성에 작성된 URL로 요철을 보냄!!!
+		Controller 로 요청을 보내야함 -> Servlet
+		
+		http://localhost:8088/first
+	 -->
+	
+	<form action="http://localhost:8088/first/first.do" method="get">
+		<ul>
+			<li>
+				이름 : <input type="text" name="name" />
+			</li>
+			<li>
+				성별 :
+				남자 <input type="radio" name="gender" value="남자" />
+				여자 <input type="radio" name="gender" value="여자" />
+				선택안함 <input type="radio" name="gender" value="선택 안 함" />
+			</li>
+			<li>
+				나이 : <input type="number" name="age" />
+			</li>
+			<li>
+				사는 지역 : 
+				<select name="city">
+					<option>서울</option>
+					<option value="제주">제주도</option>
+				</select>
+			</li>
+			<li>
+				키 : <input type="range" min="130" max="220" name="height" />
+			</li>
+			<li>
+				좋아하는 음식(모두 고르시오)
+				햄버거 <input type="checkbox" name="food" value="햄버거" />
+				제육볶음 <input type="checkbox" name="food" value="제육볶음" />
+				돈가스 <input type="checkbox" name="food" value="돈가스" />
+				피자 <input type="checkbox" name="food" value="피자" />
+				치킨 <input type="checkbox" name="food" value="치킨" />
+			</li>
+			<li>
+				<button type="submit">가즈아</button>
+			</li>
+		</ul>
+	</form>
+	
+	
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

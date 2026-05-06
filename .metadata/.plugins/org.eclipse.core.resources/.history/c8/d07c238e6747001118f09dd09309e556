@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+
+	<!-- 
+		web.xml 파일
+		
+		- 웹 애플리케이션의 기본적인 설정을 위해 작성하는 파일
+		- 서버를 동작시켜서 애플리케이션을 구동하면 제일 먼저 읽는 파일
+	 -->
+  <display-name>MyFirstWebProject</display-name>
+  <!-- 
+	* welcome-file : 클라이언트가 WebBrowser를 통해 URL을 입력해서 요청을 보낼 때 가장 먼저 보여지게 되는 메인페이지를 지정하는 태그
+	
+	http://www.kh-academy.co.kr
+	http://localhost:8088/first
+	
+	http:// 구동중인 톰캣서버의 IP 주소 : 포트번호 / contextRoot
+	
+	-> 각자 본인 컴퓨터에 구축해놓은 서버의 IP주소를 입력 : 192.168.xxx.xxx -> 127.0.0.1 -> localhost
+	-> 서버의 포트번호 : 8088(80으로 지정할 경우 생략이 가능)
+	-> 서버내의 구동중인 contextRoot : first
+	
+	http://localhost:8088/first
+		
+   -->
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+</web-app>

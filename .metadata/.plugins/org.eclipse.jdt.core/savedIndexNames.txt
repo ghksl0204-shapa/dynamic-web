@@ -1,0 +1,7 @@
+INDEX VERSION 1.134+C:\workspace\dynamic-workspace\.metadata\.plugins\org.eclipse.jdt.core
+229920082.index
+3112281733.index
+3349991710.index
+3141669274.index
+1865797976.index
+3603555576.index

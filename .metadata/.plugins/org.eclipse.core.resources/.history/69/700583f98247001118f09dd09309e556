@@ -1,0 +1,29 @@
+package com.kh.first.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/first.do") // Servlet == HTTP요청을 처리하는 Java 클래스
+public class RequestGetServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public RequestGetServlet() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		System.out.println("haha~");
+		/*
+		 * 톰캣 실행 => web.xml
+		 */
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

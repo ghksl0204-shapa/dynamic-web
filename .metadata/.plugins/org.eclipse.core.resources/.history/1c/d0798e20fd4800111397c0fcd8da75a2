@@ -1,0 +1,5 @@
+package com.kh.el.model.dto;
+
+public class Person {
+
+}

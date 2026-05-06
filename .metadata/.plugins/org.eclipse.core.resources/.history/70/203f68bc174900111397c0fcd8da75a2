@@ -1,0 +1,66 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hoitttttttt~</title>
+</head>
+<body>
+
+	<h1>웰컴파일입니다.</h1>
+	
+	<h2>* EL (Expression Language)</h2>
+	
+	<p>
+		JSP상에서 자바에서 만들어진 값을 출력하고 싶다면 => &lt;%= 변수 %> <br>
+		EL구문을 사용하면 \${ 변수 } 형식으로 작성할 수 있음
+	
+	</p>
+	
+	<h3>EL구문 학습~~~</h3>
+	
+	<a href="http://localhost:8088/action/el.do"> 서블릿으로 요청 </a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML</title>
+</head>
+<body>
+	<h1>welcome file</h1>
+	<!-- 
+		1) 새 워크스페이스 생성 후 이클립스로 열기
+		2) 작업 환경 구성
+			2_1) 보여질 화면요소를 구성
+			2_2) 서버 실행환경을 구성[Window - Preferences](Server - Runtime Environments)
+			이클립스 상에서 서버를 실행할 수 있도록 실행환경을 연동하는 과정
+			Add 버튼 클릭 -> 설치한 ApacheTocat과 동일한 버전을 선택 -> Next 버튼 누르기
+			-> Browse 버튼 클릭 -> 설치한 톰캣 폴더까지 이동(bin 폴더가 보여야함) -> finish 버튼 클릭
+		3) 서버 생성하기[Servers]
+			3_1) [Server] - [New] - [Server]
+			3_2) 2_2번 작업을 하고 왔다면 기본적으로 Runtime 이 잡혀있음
+			3_3) Finish 버튼 클릭
+			3_4) 서버 세팅하기(만들어진 서버를 더블클릭)
+				3_4_1) 왼쪽 하단에 ServerOption 탭이 있음 -> Server Module Publishing 체크박스를 체크
+				=> 체크를 안하면 file upload / download 경로 지정이 운영체제 상 숨긴폴더로 지정
+				3_4_2) 포트번호 충돌을 방지하기 위해서 포트번호 재설정 -> 작업이 끝나면 반드시 저장
+		4) Dynamic Web Project 만들기 [Project Explorer - new]
+			4_1) 프로젝트명 작성하기 - Next 버튼 클릭
+			4_2) default output folder 경로 재설정 : src/main/webapp/WEB-INF/classes
+			    -> classes 폴더 안에 컴파일이 끝난 .class 파일이 들엉감
+			    WEB-INF 안에 만들어두지 않으면 외부에서 접근이 가능하기 때문에 보안상 취약하다
+			    - Next 버튼 클릭
+		    4_3) Context root : 애플리케이션만의 고유한 별칭으로 만들어줌(기본값 : 프로젝트명)
+		    재정의해서 쓰는것이 일반적임 / 실제로 매우 자주 바뀜
+		    -> 하나의 서버로 여러 개의 애플리케이션을 구동할 수 있음
+		    고유한 이름을 통해 애플리케이션에 요청을 보내는 경로로 사용할 수 있음
+		    Content Directory : 실제 배포되는 폴더(서버에 올리가는 폴더)의 최상위 폴더명
+		    -> 건들지 않음
+		    Generate web.xml deployment descriptor : 기본적으로 체크 X
+		    -> 현재 애플리케이션의 정보를 담는 파일 -> 나는 죽었다깨나도 바꿀 일 없다 -> 안만들어도 무방
+		    Finish 버튼 클릭
+	-->
+	
+	<hr>
+	
+	<h2>web을 시작</h2>
+	
+	
+	
+</body>
+</html>

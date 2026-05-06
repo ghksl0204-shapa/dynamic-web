@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>실습</title>
+</head>
+<body>
+
+	<form action="http://localhost:8088/first/second.do" method="get">
+		<ul>
+			<li>
+				이름 : <input type="text" name="name" />
+			</li>
+			<li>
+				성별 :
+				남자 <input type="radio" name="gender" value="남자" />
+				여자 <input type="radio" name="gender" value="여자" />
+				선택안함 <input type="radio" name="gender" value="선택 안 함" />
+			</li>
+			<li>
+				나이 : <input type="number" name="age" />
+			</li>
+			<li>
+				생년월일 : <input type="date" name="birthDate">
+			</li>
+			<li>
+				사는 지역 : 
+				<select name="city">
+					<option>서울특별시</option>
+					<option>경기도</option>
+					<option>인천광역시</option>
+					<option>강원도</option>
+					<option>충청북도</option>
+					<option>충청남도</option>
+					<option>대전광역시</option>
+					<option>세종특별시</option>
+					<option>경상북도</option>
+					<option>대구광역시</option>
+					<option>울산광역시</option>
+					<option>경상남도</option>
+					<option>부산특별시</option>
+					<option>전라북도</option>
+					<option>전라남도</option>
+					<option>광주광역시</option>
+					<option value="제주도">제주도</option>
+				</select>
+			</li>
+			<li>
+				키 : <input type="range" min="130" max="220" name="height" />
+			</li>
+			<li>
+				좋아하는 음식(모두 고르시오)
+				햄버거 <input type="checkbox" name="food" value="햄버거" />
+				제육볶음 <input type="checkbox" name="food" value="제육볶음" />
+				돈가스 <input type="checkbox" name="food" value="돈가스" />
+				피자 <input type="checkbox" name="food" value="피자" />
+				치킨 <input type="checkbox" name="food" value="치킨" />
+			</li>
+			<li>
+				자기소개 <br>
+				<textarea rows="15" cols="80"></textarea>
+			</li>
+			<li>
+				<button type="submit">가즈아</button>
+			</li>
+		</ul>
+	</form>
+
+</body>
+</html>
