@@ -122,11 +122,16 @@
 	          </c:when>
 	          <c:otherwise>
 		          <li class="nav-item">
-		          <a class="nav-link js-scroll-trigger" href="">내정보</a>
+		          <a class="nav-link js-scroll-trigger" href="http://localhost:8088/kh/mypage.do">내정보</a>
 		          </li>
 		          <li class="nav-item">
-		          <a class="nav-link js-scroll-trigger" href="" onclick="">로그아웃</a>
+		          <a class="nav-link js-scroll-trigger" onclick="logout();">로그아웃</a>
 		          </li>
+		          <script>
+		          	function logout(){
+						location.href = 'http://localhost:8088/kh/logout.do';
+		          	};
+		          </script>
 	          </c:otherwise>
        	  </c:choose>
           
