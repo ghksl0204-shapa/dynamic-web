@@ -106,7 +106,7 @@
             <a class="nav-link js-scroll-trigger" href="#">공지사항</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="">게시판</a>
+            <a class="nav-link js-scroll-trigger" href="http://localhost:8088/kh/boards.do?page=1">게시판</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="">사진게시판</a>
