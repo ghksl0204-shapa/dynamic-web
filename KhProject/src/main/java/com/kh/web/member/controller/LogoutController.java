@@ -21,8 +21,9 @@ public class LogoutController extends HttpServlet {
 		// 로그인		=> 인증에 성공한 사용자의 정보를 서버측 저장소인 세션에 저장
 		// 로그아웃	=> 세션에 저장되어 있는 인증된 사용자의 정보를 제거
 		HttpSession session = request.getSession();
-		//session.removeAttribute("userInfo");
-		session.invalidate(); // 만료시킨다, 무효화한다.
+		session.removeAttribute("userInfo");
+		// session.invalidate(); // 만료시킨다, 무효화한다.
+		session.setAttribute("alertMsg", "로그아웃 추카포카");
 		response.sendRedirect("/kh");
 	}
 

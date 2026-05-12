@@ -34,5 +34,110 @@
 		       CREATE_DATE DESC
 		OFFSET #{offset} ROWS FETCH NEXT #{boardLimit} ROWS ONLY                     
 	</select>
+	
+	<insert id="insertBoard"
+			parameterType="board">
+		<selectKey order="AFTER" resultType="long" keyProperty="boardNo">
+			SELECT MAX(BOARD_NO) FROM WEB_BOARD
+		</selectKey>	
+		INSERT
+		  INTO
+		       WEB_BOARD
+		       (
+		       USER_NO,
+		       BOARD_TITLE,
+		       BOARD_CONTENT
+		       )
+		VALUES       
+		       (
+		       #{userNo},
+		       #{boardTitle},
+		       #{boardContent}
+		       )
+	</insert>
+	
+	<insert id="insertAttachment">
+	  	INSERT
+	  	  INTO
+	  	       WEB_ATTACHMENT
+	  	       (
+	  	       REF_BNO,
+	  	       ORIGIN_NAME,
+	  	       CHANGE_NAME,
+	  	       FILE_PATH,
+	  	       BOARD_TYPE,
+	  	       FILE_LEVEL
+	  	       )
+		VALUES
+		       (
+		       #{refBno},
+		       #{originName},
+		       #{changeName},
+		       #{filePath},
+		       #{boardType},
+		       #{fileLevel}
+		       )
+	</insert>
+	
+	<update id="increaseCount">
+		UPDATE
+		       WEB_BOARD
+		   SET
+		       COUNT = COUNT + 1
+		 WHERE
+		       BOARD_NO = #{boardNo}
+		   AND
+		       STATUS = 'N'              
+	</update>
+	
+	<select id="selectBoard"
+			resultType="board">
+		SELECT
+		       BOARD_NO,
+		       USER_NO,
+		       USER_NAME,
+		       BOARD_TITLE,
+		       BOARD_CONTENT
+		  FROM
+		       WEB_BOARD
+		  JOIN
+		       WEB_MEMBER USING(USER_NO)
+		 WHERE
+		       WEB_BOARD.STATUS = 'N'
+		   AND
+		       BOARD_NO = #{boardNo}                     	
+	</select>
+	
+	<select id="selectAttachment" resultType="com.kh.web.board.model.dto.AttachmentDto">
+		SELECT
+		       FILE_NO,
+		       ORIGIN_NAME,
+		       CHANGE_NAME,
+		       FILE_PATH
+		  FROM
+		       WEB_ATTACHMENT
+		 WHERE
+		       REF_BNO = #{boardNo}           
+	
+	</select>
+	
+	<update id="deleteBoard">
+		UPDATE
+		       WEB_BOARD
+		   SET
+		       STATUS = 'Y'
+		 WHERE
+		       BOARD_NO = #{boardNo}
+		   AND
+		       USER_NO = #{userNo}              
+	</update>
+	
+	<delete id="deleteAttachment">
+		DELETE
+		  FROM
+		       WEB_ATTACHMENT
+		 WHERE
+		       REF_BNO = #{boardNo}           
+	</delete>
 
 </mapper>

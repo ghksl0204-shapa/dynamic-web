@@ -52,6 +52,7 @@ public class LoginController extends HttpServlet {
 //			response.sendRedirect("/kh");
 			HttpSession session = request.getSession();
 			session.setAttribute("userInfo", loginMember);
+			session.setAttribute("alertMsg", "로그인 추카포카");
 			response.sendRedirect("/kh");
 		} else {
 			request.setAttribute("message", "로그인에 실패했습니다.");

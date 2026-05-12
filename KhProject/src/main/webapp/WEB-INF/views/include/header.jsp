@@ -85,6 +85,12 @@
 
 <body id="page-top">
 
+	<c:if test="${ not empty alertMsg }">
+		<script>
+			alertify.success('${ alertMsg }');
+		</script>
+		<c:remove var="alertMsg" scope="session"/>
+	</c:if>
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -103,7 +109,7 @@
             <a class="nav-link js-scroll-trigger" href="">HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">공지사항</a>
+            <a class="nav-link js-scroll-trigger" href="http://localhost:8088/kh/notices.do?page=1">공지사항</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="http://localhost:8088/kh/boards.do?page=1">게시판</a>

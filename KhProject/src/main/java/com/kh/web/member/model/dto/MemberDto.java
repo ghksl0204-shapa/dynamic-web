@@ -15,7 +15,17 @@ public class MemberDto {
 	private Date enrollDate;
 	private Date modifyDate;
 	private String status;
+	private String role;
 	
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public MemberDto() {
 		super();
 	}

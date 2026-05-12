@@ -26,8 +26,8 @@ tr:hover{
          </div>
          <div class="col-lg-10">
             <div class="panel-body">
-            <h2 class="page-header"><span style="color: #52b1ff;">KH</span> 자유 게시판
-               <a href="http://localhost:8088/kh/insertform.bo" class="btn float-right" style="background-color: #52b1ff; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">글쓰기</a>
+            <h2 class="page-header"><span style="color: #52b1ff;">KH</span> 공지 게시판
+               <a href="http://localhost:8088/kh/insertform.no" class="btn float-right" style="background-color: #52b1ff; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">글쓰기</a>
             </h2>
                <table class="table table-bordered table-hover">
                   <thead>
@@ -42,32 +42,32 @@ tr:hover{
                   <tbody>
 	           
                     <c:choose>
-                    	<c:when test="${ empty boards }">
+                    	<c:when test="${ empty notices }">
                     		<tr>
                     			<th colspan="5"> 조회 결과가 존재하지 않습니다.</th>
                     		</tr>
                     	</c:when>
                     	<c:otherwise>
-                    		<c:forEach var="board" items="${ boards }">
+                    		<c:forEach var="notice" items="${ notices }">
 			                    <tr style="color: #52b1ff;"
-			                        class="board"
+			                        class="notice"
 			                        id="1">
 			                        <td>
-			                        ${ board.boardNo }
+			                        ${ notice.noticeNo }
 			                        </td>
 			                        <td>
-			                        ${ board.userName }
+			                        ${ notice.userName }
 			                        </td>
 			                        <td style="color: #52d6ffcc;">
-			                        <a href="http://localhost:8088/kh/detail.bo?boardNo=${ board.boardNo }">
-			                        ${ board.boardTitle } &nbsp;
+			                        <a href="http://localhost:8088/kh/detail.no?noticeNo=${ notice.noticeNo }">
+			                        ${ notice.noticeTitle } &nbsp;
 			                        </a>
 			                        </td>
 			                        <td>
-			                        ${ board.createDate }
+			                        ${ notice.createDate }
 			                        </td>
 			                        <td>
-			                        ${ board.count }
+			                        ${ notice.count }
 			                        </td>
 			                    </tr>    
                     		</c:forEach>
@@ -94,22 +94,22 @@ tr:hover{
    	        	   	<c:if test="${ pi.currentPage gt 1 }">
    		                <button 
 		                class="btn btn-outline-primary" style="color:#52b1ff;"
-		                onclick="location.href='http://localhost:8088/kh/boards.do?page=${pi.currentPage - 1}'">이전</button>
+		                onclick="location.href='http://localhost:8088/kh/notices.do?page=${pi.currentPage - 1}'">이전</button>
 	        	   	</c:if>
 	        	   <c:forEach var="i" begin="${ pi.startPage }" end="${ pi.endPage }">
 		                <button 
 		                class="btn btn-outline-primary" style="color:#52b1ff;"
-		                onclick="location.href='http://localhost:8088/kh/boards.do?page=${i}'">${ i }</button>
+		                onclick="location.href='http://localhost:8088/kh/notices.do?page=${i}'">${ i }</button>
 	        	   
 	        	   </c:forEach>
 	        	   	<c:if test="${ pi.currentPage ne pi.maxPage }">
    		                <button 
 		                class="btn btn-outline-primary" style="color:#52b1ff;"
-		                onclick="location.href='http://localhost:8088/kh/boards.do?page=${pi.currentPage + 1}'">다음</button>
+		                onclick="location.href='http://localhost:8088/kh/notices.do?page=${pi.currentPage + 1}'">다음</button>
 	        	   	</c:if>
    		                <button 
 		                class="btn btn-outline-primary" style="color:#52b1ff;"
-		                onclick="location.href='http://localhost:8088/kh/boards.do?page=${pi.endPage + 1}'">다다음</button>
+		                onclick="location.href='http://localhost:8088/kh/notices.do?page=${pi.endPage + 1}'">다다음</button>
 	        	   
 	         </div>
          </div>

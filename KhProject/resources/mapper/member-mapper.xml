@@ -36,7 +36,8 @@
 		       EMAIL email,
 		       ENROLL_DATE enrollDate,
 		       MODIFY_DATE modifyDate,
-		       STATUS
+		       STATUS,
+		       ROLE
 		  FROM 
 		       WEB_MEMBER
 		 WHERE
@@ -71,7 +72,8 @@
 		       EMAIL,
 		       ENROLL_DATE,
 		       MODIFY_DATE,
-		       STATUS
+		       STATUS,
+		       ROLE
 		  FROM 
 		       WEB_MEMBER
 		 WHERE

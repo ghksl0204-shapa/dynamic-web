@@ -31,7 +31,11 @@ public class MyRenamePolicy implements FileRenamePolicy {
 		
 		String changeName = "KH_" + currentTime + "_" + randomNum + ext;
 		
-		return null;
+		// 2. 기존 파일명을 바꾼 이름으로 적용시켜서 반환
+		
+		
+		
+		return new File(origin.getParent(), changeName);
 	}
 
 }
