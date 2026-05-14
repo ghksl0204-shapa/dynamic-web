@@ -105,4 +105,34 @@ public class BoardService {
 		return result;
 	}
 
+	public int updateBoard(BoardDto board, AttachmentDto at) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		// 1. WEB_BOARD => UPDATE
+		//----------------------------
+		// 2. WEB_ATTACHMENT => UPDATE
+		// 3. WEB_ATTACHMENT => INSERT
+		
+		int result = bd.updateBoard(sqlSession, board);
+		
+		// 새 첨부파일이 존재할경우
+		if(at != null) {
+			if(at.getFileNo() != null) {
+				// 기존 첨부파일 존재
+				result *= bd.updateAttachment(sqlSession, at);
+			} else {
+				// 기존 첨부파일 존재 X
+				result *= bd.insertAttachment(sqlSession, at);
+			}
+		} // 딱히 할 거 없음
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		return result;
+	}
+
 }

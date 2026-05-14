@@ -46,4 +46,12 @@ public class BoardDao {
 		return sqlSession.delete("boardMapper.deleteAttachment", boardNo);
 	}
 
+	public int updateBoard(SqlSession sqlSession, BoardDto board) {
+		return sqlSession.update("boardMapper.updateBoard", board);
+	}
+	
+	public int updateAttachment(SqlSession sqlSession, AttachmentDto at) {
+		return sqlSession.update("boardMapper.updateAttachment", at);
+	}
+
 }

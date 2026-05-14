@@ -139,5 +139,30 @@
 		 WHERE
 		       REF_BNO = #{boardNo}           
 	</delete>
+	
+	<update id="updateBoard">
+		UPDATE
+		       WEB_BOARD
+		   SET
+		       BOARD_TITLE = #{boardTitle},
+		       BOARD_CONTENT = #{boardContent}
+		 WHERE
+		       STATUS = 'N'
+		   AND
+		       BOARD_NO = #{boardNo}
+		   AND
+		       USER_NO = #{userNo}                  
+	</update>
+	
+	<update id="updateAttachment">
+		UPDATE
+		       WEB_ATTACHMENT
+		   SET
+		       ORIGIN_NAME = #{originName},
+		       CHANGE_NAME = #{changeName},
+		       FILE_PATH = #{filePath}
+		 WHERE
+		       FILE_NO = #{fileNo}      
+	</update>
 
 </mapper>

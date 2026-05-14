@@ -17,6 +17,8 @@ C:\workspace\dynamic-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspse
 \ActionProject\src\main\java
 C:\workspace\dynamic-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3569438064.index
 \MyFirstWebProject\src\main\java
+C:\workspace\dynamic-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2675984202.index
+\KhProject\src\main\java
 C:\workspace\dynamic-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\394457108.index
 \ActionProject\src\main\java
 C:\workspace\dynamic-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\890143661.index
