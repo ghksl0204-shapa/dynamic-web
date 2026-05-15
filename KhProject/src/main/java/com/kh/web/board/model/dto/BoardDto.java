@@ -3,7 +3,6 @@ package com.kh.web.board.model.dto;
 import java.sql.Date;
 
 public class BoardDto {
-	
 	private Long boardNo;
 	private Long userNo;
 	private String boardTitle;
@@ -13,26 +12,25 @@ public class BoardDto {
 	private int count;
 	private String status;
 	private String userName;
+	private String userRole;
+	private String src;
 	
-	public String getUserName() {
-		return userName;
+	
+	public String getSrc() {
+		return src;
 	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setSrc(String src) {
+		this.src = src;
 	}
-
 	public BoardDto() {
 		super();
 	}
-
 	public BoardDto(Long userNo, String boardTitle, String boardContent) {
 		super();
 		this.userNo = userNo;
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
 	}
-
 	public BoardDto(Long boardNo, Long userNo, String boardTitle, String boardContent, Date createDate, Date modifyDate,
 			int count, String status) {
 		super();
@@ -44,78 +42,95 @@ public class BoardDto {
 		this.modifyDate = modifyDate;
 		this.count = count;
 		this.status = status;
+		
 	}
+	
 
+	public BoardDto(Long boardNo, Long userNo, String boardTitle, String boardContent, Date createDate, Date modifyDate,
+			int count, String status, String userName, String userRole) {
+		super();
+		this.boardNo = boardNo;
+		this.userNo = userNo;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.createDate = createDate;
+		this.modifyDate = modifyDate;
+		this.count = count;
+		this.status = status;
+		this.userName = userName;
+		this.userRole = userRole;
+	}
+	public String getUserRole() {
+		return userRole;
+	}
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
+	}
 	public Long getBoardNo() {
 		return boardNo;
 	}
-
 	public void setBoardNo(Long boardNo) {
 		this.boardNo = boardNo;
 	}
-
 	public Long getUserNo() {
 		return userNo;
 	}
-
 	public void setUserNo(Long userNo) {
 		this.userNo = userNo;
 	}
-
 	public String getBoardTitle() {
 		return boardTitle;
 	}
-
 	public void setBoardTitle(String boardTitle) {
 		this.boardTitle = boardTitle;
 	}
-
 	public String getBoardContent() {
 		return boardContent;
 	}
-
 	public void setBoardContent(String boardContent) {
 		this.boardContent = boardContent;
 	}
-
 	public Date getCreateDate() {
 		return createDate;
 	}
-
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-
 	public Date getModifyDate() {
 		return modifyDate;
 	}
-
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
-
 	public int getCount() {
 		return count;
 	}
-
 	public void setCount(int count) {
 		this.count = count;
 	}
-
 	public String getStatus() {
 		return status;
 	}
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
+	
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	@Override
 	public String toString() {
 		return "BoardDto [boardNo=" + boardNo + ", userNo=" + userNo + ", boardTitle=" + boardTitle + ", boardContent="
 				+ boardContent + ", createDate=" + createDate + ", modifyDate=" + modifyDate + ", count=" + count
 				+ ", status=" + status + ", userName=" + userName + "]";
 	}
-
-
+	
+	
+	
+	
+	
 }

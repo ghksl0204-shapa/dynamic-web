@@ -24,7 +24,9 @@
 	 <jsp:include page="WEB-INF/views/include/main.jsp"/>
 	 <jsp:include page="WEB-INF/views/include/footer.jsp"/>
 	 
-	 
+	 <a href="insert.notice">노티스 인서트</a>
+	 <hr>
+	 <a href="select.notice">노티스 셀렉트</a>
 	 
 </body>
 </html>

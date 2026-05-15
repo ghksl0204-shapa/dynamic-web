@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.kh.web.ajax.model.dto.ReplyDto;
 import com.kh.web.board.model.dto.AttachmentDto;
 import com.kh.web.board.model.dto.BoardDto;
+import com.kh.web.board.model.dto.ImageResponse;
 import com.kh.web.common.model.dto.PageInfo;
 
 public class BoardDao {
@@ -52,6 +54,26 @@ public class BoardDao {
 	
 	public int updateAttachment(SqlSession sqlSession, AttachmentDto at) {
 		return sqlSession.update("boardMapper.updateAttachment", at);
+	}
+
+	public List<BoardDto> selectImageList(SqlSession sqlSession) {
+		return sqlSession.selectList("boardMapper.selectImageList");
+	}
+
+	public int insertImage(SqlSession sqlSession, BoardDto board) {
+		return sqlSession.insert("boardMapper.insertImage", board);
+	}
+
+	public ImageResponse selectImageDetail(SqlSession sqlSession, Long boardNo) {
+		return sqlSession.selectOne("boardMapper.selectImageDetail", boardNo);
+	}
+
+	public int insertReply(SqlSession sqlSession, ReplyDto reply) {
+		return sqlSession.insert("boardMapper.insertReply", reply);
+	}
+
+	public List<ReplyDto> selectReply(SqlSession sqlSession, Long boardNo) {
+		return sqlSession.selectList("boardMapper.selectReply", boardNo);
 	}
 
 }

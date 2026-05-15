@@ -164,5 +164,118 @@
 		 WHERE
 		       FILE_NO = #{fileNo}      
 	</update>
+	
+	<select id="selectImageList" resultType="board">
+		SELECT
+		       BOARD_NO,
+		       BOARD_TITLE,
+		       WEB_IMAGE_BOARD.CREATE_DATE,
+		       FILE_PATH || '/' || CHANGE_NAME "src" 
+		  FROM
+		       WEB_IMAGE_BOARD
+		  JOIN
+		       WEB_ATTACHMENT ON (BOARD_NO = REF_BNO)
+		 WHERE
+		       BOARD_TYPE = 'I'
+		   AND
+		       STATUS = 'N'
+		   AND
+		       FILE_LEVEL = 1
+		 ORDER
+		    BY
+		       BOARD_NO DESC                              
+	</select>
+	
+	<insert id="insertImage">
+		<selectKey resultType="Long" keyProperty="boardNo" order="BEFORE">
+			SELECT SEQ_IMAGE.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT
+		  INTO
+		       WEB_IMAGE_BOARD
+		       (
+		       BOARD_NO,
+		       BOARD_TITLE,
+		       BOARD_CONTENT,
+		       BOARD_WRITER
+		       )
+		VALUES
+		       (
+		       #{boardNo},
+		       #{boardTitle},
+		       #{boardContent},
+		       #{userNo}
+		       )       
+	</insert>
+	
+	<resultMap type="com.kh.web.board.model.dto.ImageResponse" id="imageResultSet">
+		<id column="BOARD_NO" property="boardNo" />
+		<result column="BOARD_TITLE" property="boardTitle" />
+		<result column="BOARD_CONTENT" property="boardContent" />
+		<collection property="files" ofType="com.kh.web.board.model.dto.AttachmentDto">
+			<id column="FILE_NO" property="fileNo" />
+			<result column="CHANGE_NAME" property="changeName"/>
+			<result column="FILE_PATH" property="filePath"/>
+		</collection>
+	</resultMap>
+	
+	<select id="selectImageDetail" resultMap="imageResultSet">
+		SELECT
+		       BOARD_NO,
+		       BOARD_TITLE,
+		       BOARD_CONTENT,
+		       FILE_NO,
+		       CHANGE_NAME,
+		       FILE_PATH
+		  FROM
+		       WEB_IMAGE_BOARD
+		  JOIN
+		       WEB_ATTACHMENT ON (BOARD_NO = REF_BNO)
+		 WHERE
+		       BOARD_NO = #{boardNo}
+		   AND
+		       WEB_IMAGE_BOARD.STATUS = 'N'
+		 ORDER
+		    BY
+		       FILE_NO ASC                          
+	</select>
+	
+	<insert id="insertReply">
+		INSERT
+		  INTO
+		       WEB_REPLY
+		       (
+		       REPLY_NO,
+		       REF_BNO,
+		       REPLY_CONTENT,
+		       REPLY_WRITER
+		       )
+		VALUES
+		       (
+		       SEQ_REPLY.NEXTVAL,
+		       #{refBno},
+		       #{replyContent},
+		       #{replyWriter}
+		       )       
+	</insert>
+	
+	<select id="selectReply" resultType="com.kh.web.ajax.model.dto.ReplyDto">
+		SELECT
+		       REPLY_NO,
+		       REPLY_CONTENT,
+		       USER_NAME,
+		       CREATE_DATE
+		  FROM
+		       WEB_REPLY
+		  JOIN
+		       WEB_MEMBER ON (REPLY_WRITER = USER_NO)
+		 WHERE
+		       WEB_REPLY.STATUS = 'N'
+		   AND
+		       REF_BNO = #{boardNo}
+		 ORDER
+		    BY
+		       REPLY_NO DESC                          
+	</select>
 
 </mapper>

@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.kh.web.ajax.model.dto.ReplyDto;
 import com.kh.web.board.model.dao.BoardDao;
 import com.kh.web.board.model.dto.AttachmentDto;
 import com.kh.web.board.model.dto.BoardDto;
 import com.kh.web.board.model.dto.BoardResponse;
+import com.kh.web.board.model.dto.ImageResponse;
 import com.kh.web.common.Template;
 import com.kh.web.common.model.dto.PageInfo;
 
@@ -133,6 +135,72 @@ public class BoardService {
 		}
 		sqlSession.close();
 		return result;
+	}
+
+	public List<BoardDto> selectImageList() {
+		SqlSession sqlSession = Template.getSqlSession();
+		List<BoardDto> boards = bd.selectImageList(sqlSession);
+		sqlSession.close();
+		return boards;
+	}
+
+	public int insertImage(BoardDto board, List<AttachmentDto> files) {
+		SqlSession sqlSession = Template.getSqlSession();
+		int result = 0;
+		try {
+			result = bd.insertImage(sqlSession, board);
+			if(result > 0) {
+				for(AttachmentDto file : files) {
+					file.setRefBno(board.getBoardNo());
+					result = bd.insertAttachment(sqlSession, file);
+					if(result == 0) {
+						new RuntimeException();
+					}
+				}
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+			result = 0;
+		} finally {
+			if(result > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+			sqlSession.close();
+		}
+		return result;
+	}
+
+	public ImageResponse selectImageDetail(Long boardNo) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		ImageResponse ir = bd.selectImageDetail(sqlSession, boardNo);
+		
+		sqlSession.close();
+		
+		return ir;
+		
+	}
+
+	public int insertReply(ReplyDto reply) {
+		SqlSession sqlSession = Template.getSqlSession();
+		int result = bd.insertReply(sqlSession, reply);
+		if(result > 0) {
+			sqlSession.commit();
+		}
+		sqlSession.close();
+		return result;
+	}
+
+	public List<ReplyDto> selectReply(Long boardNo) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		List<ReplyDto> reply = bd.selectReply(sqlSession, boardNo);
+		sqlSession.close();
+		return reply;
 	}
 
 }

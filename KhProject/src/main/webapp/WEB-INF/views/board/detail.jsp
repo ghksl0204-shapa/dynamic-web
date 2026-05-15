@@ -82,21 +82,80 @@
 				<thead>
 					<tr>
 						<th>댓글작성</th>
-						
+						<c:choose>
+							<c:when test="${ userInfo ne null }">
+								<td>
+									<textarea id="replyContent" cols="50" rows="3" style="resize:none;" class="form-control"></textarea>
+								</td>
+								<td><button onclick="insertReply();" class="btn" style="width : 100%; height : 100%; background-color: #52b1ff; color : white;">댓글등록</button></td>
+							</c:when>							
 							
-							<td>
-								<textarea readonly cols="50" rows="3" style="resize:none;" class="form-control">로그인 후 이용가능한 서비스입니다.</textarea>
-							</td>
-							<td><button class="btn" style="width : 100%; height : 100%; background-color: #52b1ff; color : white;">댓글등록</button></td>
+							<c:otherwise>
+								<td>
+									<textarea readonly cols="50" rows="3" style="resize:none;" class="form-control">로그인 후 이용가능한 서비스입니다.</textarea>
+								</td>
+								<td><button class="btn" style="width : 100%; height : 100%; background-color: #52b1ff; color : white;">댓글등록</button></td>
+							</c:otherwise>							
 
+						</c:choose>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="tbody">
 				
 				</tbody>
 			</table>
 			<br><br><br><br>
 	    </div>
+	    
+	    <script>
+	    
+	    	function insertReply(){
+	    		$.ajax({
+	    			url : 'http://localhost:8088/kh/insert.re',
+	    			type : 'post',
+	    			data : {
+	    				boardNo : ${ board.boardNo },
+	    				replyContent : document.querySelector('#replyContent').value
+	    			},
+	    			success : result => {
+	    				console.log(result);
+	    				if(result.code === '201'){
+	    					alertify.alert('댓글작성성공~');
+	    					document.querySelector('#replyContent').value = '';
+	    					selectReply();
+	    				}
+	    			}
+	    		});
+	    	}
+	    	
+	    	window.onload = () => {
+	    		selectReply();
+	    	};
+	    	
+	    	function selectReply(){
+	    		
+	    		$.ajax({
+	    			url : 'http://localhost:8088/kh/list.re',
+	    			type : 'get',
+	    			data : {
+	    				boardNo : ${board.boardNo}
+	    			},
+	    			success : result => {
+	    				// console.log(result);
+	    				const el = result.data.map(e => `
+	    											<tr>
+	    												<td>\${e.userName}</td>
+	    												<td>\${e.replyContent}</td>
+	    												<td>\${e.createDate}</td>
+	    											</tr>
+	    				                      `).join('');
+	    				document.querySelector('#tbody').innerHTML = el;
+	    			}
+	    		})
+	    		
+	    	}
+	    
+	    </script>
 
 	</div>
 	
